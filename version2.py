@@ -1,5 +1,7 @@
 
-from rich import print
+from rich.console import Console
+
+console = Console()
 
 todo_list = []
 
@@ -16,7 +18,7 @@ while True:
         todo_data = input("Please ad ToDo date (in format: yyyy-mm-dd): ")
 
         if not re.fullmatch(pattern, todo_data):
-            print("\nYou entered data in a wrong format.")
+            console.print("\nYou entered data in a wrong format.", style="red")
         else:
             repeat = False
 
@@ -28,7 +30,7 @@ while True:
 
     todo_list.append(todo)
 
-    print("\nToDo list:\n")
+    console.print("\nToDo list:\n", style="bold cyan")
 
     for p in todo_list:
-        print(f"ToDo Title: {p['title']}\n ToDo Description: {p['description']}\n ToDo Due Date: {p['data']}")
+        console.print(f"ToDo Title: [magenta]{p['title']}[/]\n ToDo Description: [magenta]{p['description']}[/]\n ToDo Due Date: [magenta]{p['data']}[/]")
